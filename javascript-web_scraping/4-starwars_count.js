@@ -8,7 +8,16 @@ request(url, (err, response, body) => {
     console.log(err);
   } else {
     const films = JSON.parse(body).results;
-    const wedgeCount = films.filter(film => film.characters.includes('https://swapi-api.hbtn.io/api/people/18/')).length;
+    let wedgeCount = 0;
+    
+    films.forEach(film => {
+      film.characters.forEach(character => {
+        if (character.includes('/18/')) {
+          wedgeCount++;
+        }
+      });
+    });
+
     console.log(wedgeCount);
   }
 });
