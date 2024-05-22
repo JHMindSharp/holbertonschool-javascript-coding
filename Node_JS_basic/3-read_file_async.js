@@ -16,6 +16,7 @@ function countStudents(path) {
         if (line) {
           const [firstname, lastname, age, field] = line.split(',');
           if (field && field !== 'field') {
+            console.log(`Lastname: ${lastname}, Age: ${age}`);
             count += 1;
             if (!fields[field]) {
               fields[field] = [];
